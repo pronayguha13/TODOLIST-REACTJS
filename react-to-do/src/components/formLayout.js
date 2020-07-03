@@ -1,10 +1,8 @@
 import React, { useRef } from "react";
-import axios from "axios";
 
 const FormLayout = (props) => {
   const ref = useRef(null);
-
-  const clearInputHandler = (e) => {
+  const clearInputHandler = () => {
     if (ref.current.value !== "") {
       const shouldAddTask = window.confirm("Do you really want to add task ?");
       if (shouldAddTask) {
@@ -12,10 +10,9 @@ const FormLayout = (props) => {
         const task = {
           taskTitle: ref.current.value,
           createdAt: new Date(),
+          completed: false,
         };
-        axios
-          .post("https://reacttodo-63df2.firebaseio.com/todos.json", task)
-          .then((res) => console.log("res.data", res.data));
+        props.taskCreateHandler(task);
         ref.current.value = "";
       }
     } else {
@@ -28,6 +25,7 @@ const FormLayout = (props) => {
       <input
         type="text"
         ref={ref}
+        autoFocus
         className="form-control"
         placeholder="Enter Your Task"
         aria-label="Enter Your Task"
