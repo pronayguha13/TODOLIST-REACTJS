@@ -7,7 +7,6 @@ import TaskDisplay from "../components/DisplayTaskLayout";
 
 const App = (props) => {
   const [task, setTask] = useState([]);
-  const [couCt, setCount] = useState(0);
   console.log("App -> task", task, typeof task);
 
   useEffect(() => {
@@ -20,13 +19,10 @@ const App = (props) => {
       });
   }, []);
 
-  const setCountHandler = (value) => {
-    setCount(value);
-  };
   return (
     <div className="App">
       <p>This is My React To Do App</p>
-      <FormLayout countHandler={() => setCountHandler()} />
+      <FormLayout />
       <TaskDisplay taskList={task} />
     </div>
   );
