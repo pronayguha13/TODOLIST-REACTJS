@@ -3,10 +3,8 @@ import { ListGroup, ListGroupItem, Spinner, Button } from "reactstrap";
 import styles from "./displayLayout.module.css";
 
 const TaskDisplay = (props) => {
-  console.log("TaskDisplay -> props", props);
   const displayListHandler = () => {
     const { taskList } = props;
-    console.log("displayListHandler -> taskList", typeof taskList);
     if (taskList !== null && taskList !== undefined) {
       if (Object.keys(taskList) && Object.keys(taskList).length) {
         return (
@@ -17,7 +15,7 @@ const TaskDisplay = (props) => {
                   <ListGroupItem key={index} className>
                     <p
                       className={
-                        taskList[task].completed ? "" : styles.strikethrough
+                        !taskList[task].completed ? "" : styles.strikethrough
                       }
                     >
                       {taskList[task].taskTitle}
@@ -38,16 +36,15 @@ const TaskDisplay = (props) => {
                     >
                       Delete
                     </Button>
+                    <hr />
                   </ListGroupItem>
                 ))}
               </ListGroup>
-            ) : (
-              <Spinner role="grow" />
-            )}
+            ) : null}
           </div>
         );
       } else {
-        return null;
+        return <Spinner role="grow" />;
       }
     } else {
       return <h1>No Task </h1>;

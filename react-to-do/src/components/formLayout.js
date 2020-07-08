@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 const FormLayout = (props) => {
   const ref = useRef(null);
-  const clearInputHandler = () => {
+  const clearInputHandler = (e) => {
     if (ref.current.value !== "") {
       const shouldAddTask = window.confirm("Do you really want to add task ?");
       if (shouldAddTask) {
@@ -12,7 +12,7 @@ const FormLayout = (props) => {
           createdAt: new Date(),
           completed: false,
         };
-        props.taskCreateHandler(task);
+        props.taskCreateHandler(task, e);
         ref.current.value = "";
       }
     } else {
