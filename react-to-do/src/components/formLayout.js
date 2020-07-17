@@ -30,15 +30,26 @@ const FormLayout = (props) => {
         placeholder="Enter Your Task"
         aria-label="Enter Your Task"
         aria-describedby="button-addon2"
+        style={{ borderRadius: 10, marginLeft: 20 }}
       />
       <div className="input-group-append">
         <button
-          className="btn btn-outline-secondary"
+          // className="btn "
+          style={{
+            outline: "none",
+            border: "none",
+            background: "none",
+            marginLeft: 10,
+          }}
           type="button"
           id="button-addon2"
           onClick={clearInputHandler}
         >
-          Add
+          <img
+            src="/icons/icons8-plus-40.png"
+            alt="Add"
+            style={{ height: 30 }}
+          />
         </button>
       </div>
     </div>

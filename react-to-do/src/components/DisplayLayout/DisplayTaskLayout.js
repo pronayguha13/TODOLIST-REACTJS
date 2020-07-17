@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, ListGroupItem, Spinner, Button } from "reactstrap";
+import { ListGroup, ListGroupItem, Spinner } from "reactstrap";
 import styles from "./displayLayout.module.css";
 
 const TaskDisplay = (props) => {
@@ -10,33 +10,51 @@ const TaskDisplay = (props) => {
         return (
           <div>
             {Object.keys(taskList) && Object.keys(taskList).length ? (
-              <ListGroup>
+              <ListGroup style={{ listStyle: "none", border: "none" }}>
                 {Object.keys(taskList).map((task, index) => (
-                  <ListGroupItem key={index} className>
+                  <ListGroupItem
+                    key={index}
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      marginBottom: 10,
+                      boxShadow:
+                        "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                    }}
+                  >
                     <p
                       className={
-                        !taskList[task].completed ? "" : styles.strikethrough
+                        !taskList[task].completed ? null : styles.strikethrough
                       }
                     >
                       {taskList[task].taskTitle}
                     </p>
-                    <Button
-                      style={{ float: "right", marginLeft: "10px" }}
-                      color="success"
-                      value="Done"
-                      onClick={() => props.completedTaskHandler(index)}
-                    >
-                      Mark as Done
-                    </Button>
-                    <Button
-                      style={{ float: "right" }}
-                      color="danger"
-                      value="Delete"
-                      onClick={() => props.deleteTaskHandler(index)}
-                    >
-                      Delete
-                    </Button>
-                    <hr />
+                    <button className={styles.checkedBtn}>
+                      <img
+                        src="/icons/icons8-checked-50.png"
+                        alt="Checked"
+                        style={{
+                          width: 30,
+                          height: 30,
+                          background: "none",
+                        }}
+                        onClick={() => props.completedTaskHandler(index)}
+                      />
+                    </button>
+
+                    <button className={styles.DeleteBtn}>
+                      <img
+                        src="/icons/delete-dustbin.png"
+                        alt=""
+                        style={{
+                          width: 30,
+                          height: 30,
+                          top: 5,
+                          // float: "right",
+                        }}
+                        onClick={() => props.deleteTaskHandler(index)}
+                      />
+                    </button>
                   </ListGroupItem>
                 ))}
               </ListGroup>
