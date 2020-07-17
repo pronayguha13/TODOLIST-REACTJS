@@ -30,7 +30,7 @@ const FormLayout = (props) => {
         placeholder="Enter Your Task"
         aria-label="Enter Your Task"
         aria-describedby="button-addon2"
-        style={{ borderRadius: 10, marginLeft: 20 }}
+        style={{ borderRadius: 10, marginLeft: 20, marginTop: 180 }}
       />
       <div className="input-group-append">
         <button
@@ -40,6 +40,7 @@ const FormLayout = (props) => {
             border: "none",
             background: "none",
             marginLeft: 10,
+            marginTop: 180,
           }}
           type="button"
           id="button-addon2"

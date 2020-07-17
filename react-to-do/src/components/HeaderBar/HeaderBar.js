@@ -5,7 +5,7 @@ import { Link } from "@reach/router";
 
 const Header = (props) => {
   return (
-    <div className={styles.Header}>
+    <div className={styles.HeaderBar}>
       <Link to="/home">
         <Button outline color="info" style={{ margin: "10px", float: "left" }}>
           Home

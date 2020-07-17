@@ -10,7 +10,9 @@ const TaskDisplay = (props) => {
         return (
           <div>
             {Object.keys(taskList) && Object.keys(taskList).length ? (
-              <ListGroup style={{ listStyle: "none", border: "none" }}>
+              <ListGroup
+                style={{ listStyle: "none", border: "none", margin: "auto" }}
+              >
                 {Object.keys(taskList).map((task, index) => (
                   <ListGroupItem
                     key={index}

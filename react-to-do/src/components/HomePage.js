@@ -91,14 +91,20 @@ const HomePage = (props) => {
       });
   };
   return (
-    <>
+    <div
+      style={{
+        maxWidth: 600,
+        textAlign: "center",
+        margin: "auto",
+      }}
+    >
       <FormLayout taskCreateHandler={createTaskHandler} />
       <TaskDisplay
         taskList={Task}
         deleteTaskHandler={deleteTaskHandler}
         completedTaskHandler={completedTaskHandler}
       />
-    </>
+    </div>
   );
 };
 export default HomePage;
